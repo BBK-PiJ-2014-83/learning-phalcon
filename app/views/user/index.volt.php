@@ -1,9 +1,16 @@
 <h1>User</h1>
 
-<?php if (property_exists($single, 'id')):?>
-	<p>Id: 	<?=$single->id?></p>
-	<p>Email: <?=$single->email?></p>
-	<?php print_r($single->getProject('id != 2')->toArray());?>
+<h2>List</h2>
+<?php echo $this->tag->form(array('user/login/?demo=555', 'method' => 'post')); ?>
+	Username : <?php echo $this->tag->textField(array('username')); ?>
+	Password : <?php echo $this->tag->passwordField(array('password')); ?>
+	<?php echo $this->tag->submitButton(array('Login')); ?>
+<?php if ($single) { ?>
+	<p>Id: 	<?php echo $single->id; ?></p>
+	<p>Email: <?php echo $single->email; ?></p>
+	<hr/>
+	<?php $first = $single->project->getFirst()->toArray(); ?>
+	<?php echo $first['id']; ?>
 	<table>
 		<thead>
 			<tr>
@@ -12,18 +19,33 @@
 			</tr>
 		</thead>
 		<tbody>
-			<?php foreach($single->project as $project): ?>
+			<?php foreach ($single->project as $key => $project) { ?>
 			<tr>
-				<td><?=$project->id?></td>				
-				<td><?=$project->title?></td>
+				<td><?php echo $project->id; ?></td>				
+				<td><?php echo $project->title; ?></td>
 			</tr>
-			<?php endforeach ?>
+			<?php } ?>
 		</tbody>
 	</table>
-<?php endif;?>
+<?php } ?>
 <hr/>
-<?php foreach($all as $user): ?>
-	<p>Id: 	<?=$user->id?></p>
-	<p>Email: <?=$user->email?></p>
-<?php endforeach ?>
+<h1>All users</h1>
+<table>
+	<thead>
+		<tr>
+			<th>Key</th>
+			<th>UserId</th>			
+			<th>Email</th>
+		</tr>
+	</thead>
+	<tbody>
+	<?php foreach ($all as $key => $user) { ?>
+		<tr>
+			<td><?php echo $key; ?></td>
+			<td><?php echo $user->id; ?></td>
+			<td><?php echo $user->email; ?></td>
+		</tr>
+	<?php } ?>
+	</tbody>
+</table>
 

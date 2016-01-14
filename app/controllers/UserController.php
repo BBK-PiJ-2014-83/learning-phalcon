@@ -13,6 +13,18 @@ class UserController extends BaseController
 		]);
 	}
 
+	public function loginAction()
+	{
+		echo $this->filter->sanitize('50aaaaas@2eeiei///1.com', "email");
+		//$this->request->hasPost();
+		//$this->request->hasQuery();		
+		//echo $this->request->getQuery('demo', 'email', 'pig');
+		$post = $this->request->getPost();
+		//if($this->request->isAjax());
+		//if($this->request->isSecureRequest());	
+		//echo $this->request->getPost('username', false, 'john');
+		//sprint_r($post);
+	}
 	//login/process/<username>/<age>
 	public function createAction()
 	{

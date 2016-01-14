@@ -1,9 +1,16 @@
 <h1>User</h1>
 
-<?php if (property_exists($single, 'id')):?>
-	<p>Id: 	<?=$single->id?></p>
-	<p>Email: <?=$single->email?></p>
-	<?php print_r($single->getProject('id != 2')->toArray());?>
+<h2>List</h2>
+{{ form('user/login/?demo=555', 'method': 'post') }}
+	Username : {{ text_field('username')}}
+	Password : {{ password_field('password')}}
+	{{ submit_button('Login')}}
+{% if single %}
+	<p>Id: 	{{single.id}}</p>
+	<p>Email: {{single.email}}</p>
+	<hr/>
+	{% set first=single.project.getFirst().toArray() %}
+	{{first['id']}}
 	<table>
 		<thead>
 			<tr>
@@ -12,18 +19,33 @@
 			</tr>
 		</thead>
 		<tbody>
-			<?php foreach($single->project as $project): ?>
+			{% for key, project in single.project %}
 			<tr>
-				<td><?=$project->id?></td>				
-				<td><?=$project->title?></td>
+				<td>{{ project.id }}</td>				
+				<td>{{ project.title }}</td>
 			</tr>
-			<?php endforeach ?>
+			{% endfor %}
 		</tbody>
 	</table>
-<?php endif;?>
+{% endif %}
 <hr/>
-<?php foreach($all as $user): ?>
-	<p>Id: 	<?=$user->id?></p>
-	<p>Email: <?=$user->email?></p>
-<?php endforeach ?>
+<h1>All users</h1>
+<table>
+	<thead>
+		<tr>
+			<th>Key</th>
+			<th>UserId</th>			
+			<th>Email</th>
+		</tr>
+	</thead>
+	<tbody>
+	{% for key,user in all%}
+		<tr>
+			<td>{{ key }}</td>
+			<td>{{ user.id }}</td>
+			<td>{{ user.email }}</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
 
