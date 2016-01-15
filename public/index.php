@@ -5,7 +5,8 @@ try {
 	$loader = new \Phalcon\Loader();
 	$loader->registerDirs([
 		'../app/controllers/',
-		'../app/models/'
+		'../app/models/',
+		'../app/config/',
 	]);	
 
 	$loader->register();
@@ -30,6 +31,12 @@ try {
 			".volt" => "Phalcon\Mvc\View\Engine\Volt"
 		]);
 		return $view;
+	});
+
+	$di->set('router', function(){
+		$router = new \Phalcon\Mvc\Router();
+		$router->mount(new Routes());	//Call it whatever name your php file is
+		return $router;
 	});
 
 	//Session start
