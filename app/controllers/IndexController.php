@@ -1,18 +1,14 @@
 <?php 
 
+use Phalcon\Tag;
+
 class IndexController extends BaseController
 {
 	public function indexAction()
 	{
-		/*
-		$this->assets->addCss('css/style.css');
-		$this->assets->addJs('third-party/js/jquery-1.12.0.min.js');	
-		*/
 
-		$this->assets->collection('footer')
-					->addJs('third-party/js/fake.js');
-
-		echo "Hello World";
+		Tag::setTitle('Home');
+		parent::initialize();
 	}
 
 	public function startSessionAction() 
