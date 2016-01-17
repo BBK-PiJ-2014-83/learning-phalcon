@@ -61,6 +61,17 @@ try {
     	//$metaData->setStrategy(new MyIntrospectionStrategy());
 	    return $metaData;
 	};
+	// Custom dispatcher (Overrides the default)
+	$di->set('dispatcher', function() use ($di) {
+		$eventsManager = $di->getShared('eventsManager');
+		//custom ACL class
+		$permission = new Permission();
+		//Listen for events from the permission class
+		$eventsManager->attach('dispatch', $permission);
+		$dispatcher = new \Phalcon\Mvc\Dispatcher();
+		$dispatcher->setEventsManager($eventsManager);
+		return $dispatcher;
+	});
 
 	//Deploy the app
 	$app = new \Phalcon\Mvc\Application($di);
