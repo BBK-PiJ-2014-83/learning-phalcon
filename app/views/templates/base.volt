@@ -28,11 +28,13 @@
 						<li><a href="#contact">Contact</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="">Sign In</a></li>
+						<li><a href="{{ url('signin/') }}">Sign In</a></li>
 					</ul>
 				</div>
 			 </div>		
 		</div>
+
+		{{ flash.output() }}
 		{% block content %}
 		{% endblock %}			
 	</body>

@@ -28,11 +28,13 @@
 						<li><a href="#contact">Contact</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="">Sign In</a></li>
+						<li><a href="<?php echo $this->url->get('signin/'); ?>">Sign In</a></li>
 					</ul>
 				</div>
 			 </div>		
 		</div>
+
+		<?php echo $this->flash->output(); ?>
 		
 	<div class="jumbotron">
 		<h1>Fireball</h1>

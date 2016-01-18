@@ -7,7 +7,7 @@ a:5:{i:0;s:287:"<!doctype html>
 		<?php echo $this->assets->outputCss('style'); ?>
 		<?php echo $this->assets->outputJs('js'); ?>
 		";s:4:"head";a:1:{i:0;a:4:{s:4:"type";i:357;s:5:"value";s:5:" 
-		";s:4:"file";s:32:"../app/views/templates/base.volt";s:4:"line";i:10;}}i:1;s:932:"		
+		";s:4:"file";s:32:"../app/views/templates/base.volt";s:4:"line";i:10;}}i:1;s:1016:"		
 	</head>
 	<body>
 		<div class="navbar navbar-default">
@@ -28,13 +28,15 @@ a:5:{i:0;s:287:"<!doctype html>
 						<li><a href="#contact">Contact</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="">Sign In</a></li>
+						<li><a href="<?php echo $this->url->get('signin/'); ?>">Sign In</a></li>
 					</ul>
 				</div>
 			 </div>		
 		</div>
+
+		<?php echo $this->flash->output(); ?>
 		";s:7:"content";a:1:{i:0;a:4:{s:4:"type";i:357;s:5:"value";s:4:"
-		";s:4:"file";s:32:"../app/views/templates/base.volt";s:4:"line";i:37;}}i:2;s:24:"			
+		";s:4:"file";s:32:"../app/views/templates/base.volt";s:4:"line";i:39;}}i:2;s:24:"			
 	</body>
 </html>
 ";}

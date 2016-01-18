@@ -29,24 +29,28 @@
 						<li><a href="#contact">Contact</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="">Sign In</a></li>
+						<li><a href="<?php echo $this->url->get('signin/'); ?>">Sign In</a></li>
 					</ul>
 				</div>
 			 </div>		
 		</div>
+
+		<?php echo $this->flash->output(); ?>
 		
-	<form class="form-signin">
+	<form class="form-signin" method="POST" action="<?php echo $this->url->get('signin/doSignin'); ?>">
 		<h2 class="form-signin-heading">Please sign in</h2>
 		<label for="inputEmail" class="sr-only">Email address</label>
-		<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+		<input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus>
 		<label for="inputPassword" class="sr-only">Password</label>
-		<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+		<input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+		<!--
 		<div class="checkbox">
 			<label>
 				<input type="checkbox" value="remember-me"> Remember me
 			</label>
 		</div>
-		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+		-->
+		<input class="btn btn-lg btn-primary btn-block" type="submit" value="Sign in" />
 	</form>	
 			
 	</body>
