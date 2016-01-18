@@ -21,6 +21,13 @@ class IndexController extends BaseController
 		$this->session->set('age', 32);
 	}
 
+	public function signoutAction()
+	{
+		$this->session->destroy();
+		$this->response->redirect('index/');
+	}
+
+	
 	public function getSessionAction($item)
 	{
 		echo $this->session->get($item);

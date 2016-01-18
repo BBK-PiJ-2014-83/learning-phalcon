@@ -27,6 +27,9 @@ class Permission extends \Phalcon\Mvc\User\Plugin
 	public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
 	{
 		//return;
+		//Debug
+		//$this->session->destroy();
+
 		$role = $this->session->get('role');
 
 		if(!$role) {
@@ -81,7 +84,7 @@ class Permission extends \Phalcon\Mvc\User\Plugin
 			foreach($this->_adminResources as $resource => $action) {
 				$acl->addResource(new Acl\Resource($resource), $action);
 			}	
-			//Allow all roles to acces the public resources
+			//Allow all roles to access the public resources
 			foreach($roles as $role) {
 				foreach($this->_publicResources as $resource => $action) {
 					$acl->allow($role->getName(), $resource, '*');
