@@ -27,7 +27,10 @@ class IndexController extends BaseController
 		$this->response->redirect('index/');
 	}
 
-	
+	public function generatePasswordAction($password)
+	{
+		echo $this->security->hash($password);
+	}
 	public function getSessionAction($item)
 	{
 		echo $this->session->get($item);

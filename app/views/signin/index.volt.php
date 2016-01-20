@@ -50,6 +50,7 @@
 			</label>
 		</div>
 		-->
+		<input type="hidden" name="<?php echo $this->security->getTokenKey(); ?>" value ="<?php echo $this->security->getToken(); ?>" />
 		<input class="btn btn-lg btn-primary btn-block" type="submit" value="Sign in" />
 	</form>	
 			
